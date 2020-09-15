@@ -5,11 +5,12 @@ using namespace std;
 
 int id, d[20005];
 int finished[20005], SCCID[20005];
+
 stack<int> s;
 vector<vector<int> > adj, SCC;
 int n,m,a,b;
 
-//Tarjan¾Ë°í¸®Áò - SCC
+//Tarjanì•Œê³ ë¦¬ì¦˜ - SCC
 int DFS(int now){
 	d[now] = ++id;
 	s.push(now);
@@ -29,7 +30,7 @@ int DFS(int now){
 			s.pop();
 			scc.push_back(tmp);
 			finished[tmp] = true;
-			SCCID[tmp] = SCC.size();//tmp°¡ ¼ÓÇÑ SCCÀÇ¹øÈ£ ÀúÀå 
+			SCCID[tmp] = SCC.size();//tmpê°€ ì†í•œ SCCì˜ë²ˆí˜¸ ì €ì¥ 
 			if(tmp == now) break;			
 		}
 		SCC.push_back(scc);
@@ -44,16 +45,16 @@ int main(){
 	
 	while(m--){
 		cin>>a>>b;
-		//À½¼ö(NOT°ÔÀÌÆ® ~)¸é 2n, ¾ç¼ö¸é 2n+1 
+		//ìŒìˆ˜(NOTê²Œì´íŠ¸ ~)ë©´ 2n, ì–‘ìˆ˜ë©´ 2n+1 
 		a = a<0 ? -2*a : 2*a+1;
 		b = b<0 ? -2*b : 2*b+1;
 		adj[a%2?a-1:a+1].push_back(b);
 		adj[b%2?b-1:b+1].push_back(a);
 		// ~a -> b
-		// ~b -> a¸¦ Ç¥Çö ÇÑ °ÍÀÓ. 
+		// ~b -> aë¥¼ í‘œí˜„ í•œ ê²ƒì„. 
 	}
 
-	//³ëµå ¹øÈ£´Â 2ºÎÅÍ ½ÃÀÛÇÔ 
+	//ë…¸ë“œ ë²ˆí˜¸ëŠ” 2ë¶€í„° ì‹œì‘í•¨ 
 	for(int i=2;i<=2*n+1 ;i++)
 		if(finished[i]==-1) DFS(i);
 		
