@@ -8,6 +8,7 @@ int n,w;
 char a,b; 
 int c[55][55], f[55][55], parent[55];
 int totalFlow; 
+
 //문자c를 정수로 변경 
 int trans(char c){
 	return c<='Z' ? c-'A' : c-'a'+26;
