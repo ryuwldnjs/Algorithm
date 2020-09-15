@@ -8,13 +8,12 @@ int n,w;
 char a,b; 
 int c[55][55], f[55][55], parent[55];
 int totalFlow; 
-//¹®ÀÚc¸¦ Á¤¼ö·Î º¯°æ 
+//ë¬¸ìcë¥¼ ì •ìˆ˜ë¡œ ë³€ê²½ 
 int trans(char c){
 	return c<='Z' ? c-'A' : c-'a'+26;
 }
 
-
-//¿¡µå¸óµå_Ä«ÇÁ - Flow ¾Ë°í¸®Áò 
+//ì—ë“œëª¬ë“œ_ì¹´í”„ - Flow ì•Œê³ ë¦¬ì¦˜ 
 void networkFlow(int source, int sink){
 	while(true){
 		fill(parent, parent+55, -1);
@@ -36,7 +35,7 @@ void networkFlow(int source, int sink){
 			
 		}
 		
-		//sink·Î °¡´Â °æ·Î°¡ ¾øÀ¸¸é Å»Ãâ 
+		//sinkë¡œ ê°€ëŠ” ê²½ë¡œê°€ ì—†ìœ¼ë©´ íƒˆì¶œ 
 		if(parent[sink] == -1) break;
 		
 		int amount = INF;
@@ -57,7 +56,7 @@ int main(){
 	ios::sync_with_stdio(false);
 	
 	cin>>n;
-	adj.resize(55); // a~z, A~Z°¡ 52°³ 
+	adj.resize(55); // a~z, A~Zê°€ 52ê°œ 
 	
 	for(int i=0;i<n;i++){
 		cin>>a>>b>>w;
@@ -70,7 +69,7 @@ int main(){
 		c[v][u] += w; 
 	}
 	
-	//source°¡ A, sink°¡ B  
+	//sourceê°€ A, sinkê°€ B  
 	networkFlow(trans('A'), trans('Z'));
 	
 	cout<<totalFlow;
