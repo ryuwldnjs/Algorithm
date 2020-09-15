@@ -3,6 +3,7 @@
 #include <queue>
 #define INF 1234567890
 using namespace std;
+
 vector<vector<int> > adj;
 int n,w;
 char a,b; 
