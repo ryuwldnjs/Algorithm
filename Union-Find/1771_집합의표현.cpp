@@ -1,3 +1,7 @@
+/**
+ * https://www.acmicpc.net/problem/1717
+ * 집합의 표현 : G5
+ */
 #include <iostream>
 #include <vector>
 using namespace std;
