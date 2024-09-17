@@ -10,10 +10,10 @@
 using namespace std;
 using pii=pair<int,int>;
 
-int v,e,k; //정점갯수 ,간선 갯수, 시작 점 
 vector<vector<pii>> graph; //간선정보 
 priority_queue<pii, vector<pii>, greater<pii>> pq;
 vector<int> dist;
+int v,e,k; //정점갯수 ,간선 갯수, 시작 점 
 
 void dijkstra(int start){
 	for(int i=1;i<=v;i++) dist[i] = INF;//초기거리 무한대 설정 
@@ -49,7 +49,7 @@ int main(){
 		cin>>from>>to>>cost;
 		graph[from].push_back({to,cost});
 	 } 
-	 
+
 	 dijkstra(k);
 	 for(int i=1;i<=v;i++){
 		if(dist[i] == INF) cout<<"INF\n";
