@@ -5,3 +5,5 @@
     - +) 경로압축
     - +) 컴포넌트 사이즈 계산
 - 다익스트라(Dijkstra)
+- 세그먼트트리(SegmentTree)
+    - Bottom-Up (for문)
