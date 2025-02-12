@@ -1,0 +1,76 @@
+#include <iostream>
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+struct Node {
+    unordered_map<char, Node*> children;
+    bool isEndOfWord = false;
+};
+
+struct Trie {
+    Node* root;
+
+    Trie() {
+        root = new Node();
+    }
+
+    ~Trie() {
+        deleteTrie(root);
+    }
+
+    void deleteTrie(Node* node) {
+        for (auto& child : node->children) {
+            deleteTrie(child.second);
+        }
+        delete node;
+    }
+
+    void insert(const string& word) {
+        Node* node = root;
+        for (char ch : word) {
+            if (node->children.count(ch) == 0)
+                node->children[ch] = new Node();
+            node = node->children[ch];
+        }
+        node->isEndOfWord = true;
+    }
+
+    bool isExisted(const string& word) {
+        Node* node = root;
+        for (char ch : word) {
+            if (node->children.count(ch) == 0) return false;
+            node = node->children[ch];
+        }
+        return node->isEndOfWord;
+    }
+
+    bool search(const string& word) {
+        Node* node = root;
+        for (char ch : word) {
+            if (node->children.count(ch) == 0) return true;
+            node = node->children[ch];
+            if (node->isEndOfWord) return false;
+        }
+        return false;
+    }
+};
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        Trie trie;
+        bool isAnswer = true;
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            string num;
+            cin >> num;
+            isAnswer &= trie.search(num);
+            trie.insert(num);
+        }
+        cout << (isAnswer ? "YES" : "NO") << '\n';
+    }
+    return 0;
+}
