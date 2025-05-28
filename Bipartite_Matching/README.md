@@ -44,6 +44,7 @@ int main(){
 
 	int answer = 0;
 	for(int i = 1; i <= n; i++){
+		if(l[i] != -1) continue;
 		visited = vector<bool>(n + 1, false);
 		if(dfs(i)) answer++;
 	}
