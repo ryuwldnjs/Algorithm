@@ -5,6 +5,7 @@
 - CCW(Counter Clock Wise)
 - 컨벡스헐(Convex Hull)
   - 모노톤체인(Monotone Chain) 알고리즘
+- 컨벡스헐트릭(Convex Hull Trick)
 - 단절점(Cut Vertex)
 - 다익스트라(Dijkstra)
 - KMP(Knuth-Morris-Pratt)
